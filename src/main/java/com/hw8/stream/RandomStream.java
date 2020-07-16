@@ -22,26 +22,26 @@ public class RandomStream {
 
     public void printMinRandomStreamValue() {
 
-        Integer list1 = list.stream()
+        Integer MinValueList = list.stream()
                 .min(Integer::compareTo).orElseThrow(NoSuchElementException::new);
-        System.out.println("Min random stream value: " + list1);
+        System.out.println("Min random stream value: " + MinValueList);
     }
 
     public void printMaxRandomStreamValue() {
-        Integer list2 = list.stream()
+        Integer MaxValueList = list.stream()
                 .max(Integer::compareTo).orElseThrow(NoSuchElementException::new);
-        System.out.println("Max random stream value: " + list2);
+        System.out.println("Max random stream value: " + MaxValueList);
     }
 
     public void printDivisibleRandomStreamValue(int divider) {
-        List<Integer> list3 = list.stream()
+        List<Integer> dividerList = list.stream()
                 .filter((y) -> y % divider == 0).collect(Collectors.toList());
-        System.out.println("Divisible elements: " + list3);
+        System.out.println("Divisible elements: " + dividerList);
     }
 
     public void printIncreaseRandomStreamValue(int magnifier) {
-        List<Integer> list4 = list.stream()
+        List<Integer> inreasedList  = list.stream()
                 .map(integer -> integer + magnifier).collect(Collectors.toList());
-        System.out.println("Increased elements values: " + list4);
+        System.out.println("Increased elements values: " + inreasedList);
     }
 }
