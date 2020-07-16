@@ -6,28 +6,42 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RandomStream {
+    private final int streamSize = 15;
+    private final int randomNumberOrigin = 0;
+    private final int randomNumberBound = 100;
 
-    public static void randomStreamGenerator() {
-        List<Integer> list = new Random()
-                .ints(15, 0, 100)
-                .boxed()
-                .collect(Collectors.toList());
+    List<Integer> list = new Random()
+            .ints(streamSize, randomNumberOrigin, randomNumberBound)
+            .boxed()
+            .collect(Collectors.toList());
+
+
+    public void printRandomStreamGenerator() {
         System.out.println("Random numbers:" + list);
+    }
+
+    public void printMinRandomStreamValue() {
 
         Integer list1 = list.stream()
                 .min(Integer::compareTo).orElseThrow(NoSuchElementException::new);
         System.out.println("Min random stream value: " + list1);
+    }
 
+    public void printMaxRandomStreamValue() {
         Integer list2 = list.stream()
                 .max(Integer::compareTo).orElseThrow(NoSuchElementException::new);
         System.out.println("Max random stream value: " + list2);
+    }
 
+    public void printDivisibleRandomStreamValue(int divider) {
         List<Integer> list3 = list.stream()
-                .filter((y) -> y % 2 == 0).collect(Collectors.toList());
+                .filter((y) -> y % divider == 0).collect(Collectors.toList());
         System.out.println("Divisible by 2: " + list3);
+    }
 
+    public void printIncreaseRandomStreamValue(int magnifier) {
         List<Integer> list4 = list.stream()
-                .map(integer -> integer + 10).collect(Collectors.toList());
+                .map(integer -> integer + magnifier).collect(Collectors.toList());
         System.out.println("Values + 10: " + list4);
     }
 }

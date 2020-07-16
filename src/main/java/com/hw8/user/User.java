@@ -1,5 +1,7 @@
 package main.java.com.hw8.user;
 
+import java.util.Objects;
+
 public class User {
     private String name;
     private int age;
@@ -30,5 +32,32 @@ public class User {
 
     public String getCity() {
         return city;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age &&
+                name.equals(user.name) &&
+                city.equals(user.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, city);
     }
 }
