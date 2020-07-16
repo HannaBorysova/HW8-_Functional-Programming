@@ -6,12 +6,12 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RandomStream {
-    private final int streamSize = 15;
-    private final int randomNumberOrigin = 0;
-    private final int randomNumberBound = 100;
+    private final int STREAM_SIZE = 15;
+    private final int RANDOM_NUMBER_ORIGIN = 0;
+    private final int RANDOM_NUMBER_BOUND = 100;
 
     List<Integer> list = new Random()
-            .ints(streamSize, randomNumberOrigin, randomNumberBound)
+            .ints(STREAM_SIZE, RANDOM_NUMBER_ORIGIN, RANDOM_NUMBER_BOUND)
             .boxed()
             .collect(Collectors.toList());
 
@@ -36,12 +36,12 @@ public class RandomStream {
     public void printDivisibleRandomStreamValue(int divider) {
         List<Integer> list3 = list.stream()
                 .filter((y) -> y % divider == 0).collect(Collectors.toList());
-        System.out.println("Divisible by 2: " + list3);
+        System.out.println("Divisible elements: " + list3);
     }
 
     public void printIncreaseRandomStreamValue(int magnifier) {
         List<Integer> list4 = list.stream()
                 .map(integer -> integer + magnifier).collect(Collectors.toList());
-        System.out.println("Values + 10: " + list4);
+        System.out.println("Increased elements values: " + list4);
     }
 }
